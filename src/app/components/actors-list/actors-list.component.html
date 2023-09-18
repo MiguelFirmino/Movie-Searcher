@@ -1,0 +1,17 @@
+<p>Actor Name:</p>
+<div>
+    <p>{{ actorName }}</p>
+</div>
+
+<p>Actor Profession:</p>
+<div>
+    <p>{{ actorProfession }}</p>
+</div>
+
+<p>Known Titles:</p>
+<div>
+    <a *ngFor="let title of knownForTitles"
+    routerLink="/movie/{{title}}">
+        {{ title }}
+    </a>
+</div>
