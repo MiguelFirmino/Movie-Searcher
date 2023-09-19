@@ -26,7 +26,7 @@ export class MoviesPageService {
     });
   }
 
-  getFilteredMovies(genreToSearch?: string, listToSearch?: string): Observable<Movies> {
+  getFilteredMovies(genreToSearch?: string, listToSearch?: string, pageToSearch?: number): Observable<Movies> {
     let url = 'https://moviesdatabase.p.rapidapi.com/titles/';
 
     let requestParams: any = {
@@ -35,8 +35,9 @@ export class MoviesPageService {
       startYear: 1940,
       endYear: 2023
     }
-    genreToSearch ? requestParams.genre = genreToSearch : undefined
-    listToSearch ? requestParams.list = listToSearch : undefined
+    genreToSearch ? requestParams.genre = genreToSearch : undefined;
+    listToSearch ? requestParams.list = listToSearch : undefined;
+    pageToSearch ? requestParams.page = pageToSearch : undefined;
 
     return this.http.get<Movies>(url, {
       params: requestParams,
@@ -44,7 +45,7 @@ export class MoviesPageService {
         'X-RapidAPI-Key': '7357ce177emshc27a9ee256a72a7p17201fjsn6fbab4980f57',
         'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
       }
-    })
+    });
   }
 
   getMovieById(id: string): Observable<Movies> {

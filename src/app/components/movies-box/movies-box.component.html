@@ -1,9 +1,14 @@
 <div>
     <select (ngSubmit)="updateMovies()">
+        <option value="null">
+            Genre
+        </option>
         <option *ngFor="let genre of movieGenres" value="{{ genre }}">
             {{ genre }}
         </option>
     </select>
+
+    <button (click)="updateMovies()">Get More Movies</button>
 </div>
 
 <app-movies-list [moviesToRender]="moviesReceived"></app-movies-list>

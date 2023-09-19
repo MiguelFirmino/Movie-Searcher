@@ -13,28 +13,11 @@ export class MoviesBoxComponent implements OnInit {
 
   moviesReceived: any = [];
   movieGenres: string[] = [];
+  moviesPage: number = 1;
 
   updateMovies = () => {
     this.moviesService
-    .getFilteredMovies(undefined, "top_rated_250")
-    .subscribe((data: Movies) => {
-      let results = data.results;
-      console.log(results);
-
-      for (let result of results) {
-        let newMovie = {
-          name: result.titleText.text,
-          image: result.primaryImage.url
-        }
-
-        this.moviesReceived = [...this.moviesReceived, newMovie];
-      }
-    });
-  }
-
-  ngOnInit() {
-    this.moviesService
-    .getFilteredMovies(undefined, 'top_rated_english_250')
+    .getFilteredMovies(undefined, 'top_rated_english_250', this.moviesPage)
     .subscribe((data: Movies) => {
       let results = data.results;
       console.log(results);
@@ -51,10 +34,17 @@ export class MoviesBoxComponent implements OnInit {
       }
     });
 
+    this.moviesPage += 1;
+  }
+
+  ngOnInit() {
+    this.updateMovies();
+
     this.moviesService
     .getAllGenres()
     .subscribe((genres: Genres) => {
       this.movieGenres = genres.results;
+      this.movieGenres.splice(0, 1);
     });
   }
 
