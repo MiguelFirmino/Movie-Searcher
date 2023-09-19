@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Actors } from '../models/Actors';
+import { Actors } from '../models/Actors.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ActorsListService {
+export class ActorsPageService {
 
   constructor(private http: HttpClient) { }
 

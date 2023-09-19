@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Actors } from 'src/app/models/Actors';
-import { ActorsListService } from 'src/app/services/actors-list.service';
+import { Actors } from 'src/app/models/Actors.model';
+import { ActorsPageService } from 'src/app/services/actors-page.service';
 
 @Component({
-  selector: 'app-actors-list',
-  templateUrl: './actors-list.component.html',
-  styleUrls: ['./actors-list.component.scss'],
+  selector: 'app-actors-page',
+  templateUrl: './actors-page.component.html',
+  styleUrls: ['./actors-page.component.scss'],
 })
-export class ActorsListComponent implements OnInit {
+export class ActorsPageComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
-    private actorListService: ActorsListService
+    private actorListService: ActorsPageService
   ) {
     router.params.subscribe((params) => {
       this.actorId = params['id'];

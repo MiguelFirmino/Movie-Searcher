@@ -25,5 +25,15 @@ export interface Movies {
       aggregateRating: number;
       voteCount: number;
     };
+    primaryImage: {
+      url: string;
+    };
+    genres: {
+      genres: [
+        {
+          text: string;
+        }
+      ];
+    };
   }>;
 }

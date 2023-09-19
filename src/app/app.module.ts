@@ -5,13 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ActorsListComponent } from './components/actors-list/actors-list.component';
+import { MoviesPageComponent } from './components/movies-page/movies-page.component';
+import { ActorsPageComponent } from './components/actors-page/actors-page.component';
+import { MoviesBoxComponent } from './components/movies-box/movies-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesListComponent,
-    ActorsListComponent
+    MoviesPageComponent,
+    ActorsPageComponent,
+    MoviesBoxComponent
   ],
   imports: [
     BrowserModule,

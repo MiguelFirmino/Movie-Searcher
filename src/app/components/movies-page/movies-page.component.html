@@ -1,0 +1,25 @@
+<p>Movie Title:</p>
+<div>
+    <p>{{ movieTitle }}</p>
+</div>
+
+<p>Ratings:</p>
+<div>
+    <p>Average: {{ averageRating }}</p>
+    <p>Number of Votes: {{ numVotes }}</p>
+</div>
+
+<p>Main Actors: </p>
+<div *ngFor="let actor of mainActors">
+    <a routerLink="/actor/{{actor.id}}">{{ actor.actorName }} as {{ actor.role }}</a>
+</div>
+
+<p>Release Year:</p>
+<div>
+    <p>{{ releaseYear }}</p>
+</div>
+
+<p>Image:</p>
+<div>
+    <p>My Image</p>
+</div>
