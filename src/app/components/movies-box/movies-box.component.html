@@ -1,14 +1,18 @@
-<div>
-    <select (ngSubmit)="updateMovies()">
-        <option value="null">
-            Genre
-        </option>
-        <option *ngFor="let genre of movieGenres" value="{{ genre }}">
-            {{ genre }}
-        </option>
-    </select>
-
-    <button (click)="updateMovies()">Get More Movies</button>
+<div class="container">
+    <div class="row">
+        <select (ngSubmit)="updateMovies()">
+            <option value="null">
+                Genre
+            </option>
+            <option *ngFor="let genre of movieGenres" value="{{ genre }}">
+                {{ genre }}
+            </option>
+        </select>
+    
+        <button class="btn btn-primary" (click)="updateMovies()">Get More Movies</button>
+    </div>
+    
+    <div class="row my-4">
+        <app-movies-list class="d-flex justify-content-center flex-wrap w-auto" [moviesToRender]="moviesReceived" #moviesList></app-movies-list>
+    </div>
 </div>
-
-<app-movies-list [moviesToRender]="moviesReceived"></app-movies-list>

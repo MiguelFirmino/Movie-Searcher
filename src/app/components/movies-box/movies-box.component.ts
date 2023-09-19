@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { MoviesPageService } from 'src/app/services/movies-page.service';
 import { Movies } from 'src/app/models/Movies.model';
 import { Genres } from 'src/app/models/Genres.model';
+import { MoviesListComponent } from '../movies-list/movies-list.component';
 
 @Component({
   selector: 'app-movies-box',
   templateUrl: './movies-box.component.html',
   styleUrls: ['./movies-box.component.scss']
 })
-export class MoviesBoxComponent implements OnInit {
+export class MoviesBoxComponent implements OnInit, AfterViewInit {
+
   constructor(private moviesService: MoviesPageService) {}
 
   moviesReceived: any = [];
   movieGenres: string[] = [];
   moviesPage: number = 1;
+  listViewWidth: number = 0;
+  listViewHeight: number = 0;
 
-  updateMovies = () => {
+
+  //@HostListener('window:resize', ['$event'])
+  updateMovies = (): void => {
     this.moviesService
     .getFilteredMovies(undefined, 'top_rated_english_250', this.moviesPage)
     .subscribe((data: Movies) => {
@@ -37,9 +43,10 @@ export class MoviesBoxComponent implements OnInit {
     this.moviesPage += 1;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.updateMovies();
 
+    // getting all genres
     this.moviesService
     .getAllGenres()
     .subscribe((genres: Genres) => {
@@ -48,5 +55,8 @@ export class MoviesBoxComponent implements OnInit {
     });
   }
 
-
+  // ngAfterViewInit(): void {
+  //   console.log(this.moviesList.nativeElement);
+  // }
+  //@ViewChild('moviesList') moviesList!: ElementRef;
 }

@@ -1,11 +1,10 @@
-<div *ngFor="let movie of moviesToRender" ngClass="movie-item">
+<div class="m-2" *ngFor="let movie of moviesToRender" ngClass="movie-item">
     <div class="movie-caption">
         <p>{{ movie.genre }}</p>
     </div>
     <img 
     src="{{ movie.image }}" 
     alt="{{ movie.name }}" 
-    routerLink="/movie/{{ movie.id }}"
     class="movie-image"
     [ngClass]="movie.genre">
 </div>
