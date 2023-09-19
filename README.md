@@ -7,10 +7,12 @@ An Angular application built for searching movies and finding out about actors.
 🚩 Done: 🚩
 - [x] Implemented <a href="https://rapidapi.com/user/SAdrian">SAdrian's</a> movies API.
 - [x] Created movies and actors components.
-- [x] Created movies and actors services. 
+- [x] Created movies and actors services.
+- [x] Implemented get more movies button. 
 
-🚩 To do: 🚩
-- [ ] Add Styling.
+🚩 To do: 🚩 
+- [ ] Implement scroller feature.
+- [ ] Adjust movie rendering according to screen size.
 - [ ] Add Home Page.
 - [ ] Add 404 Page, and redirects.
 - [ ] Many more!
@@ -18,3 +20,4 @@ An Angular application built for searching movies and finding out about actors.
 ## Concepts Applied🏴
 
 - HTTP Requests.
+- Angular Routes.
