@@ -9,7 +9,7 @@ import { MoviesListComponent } from '../movies-list/movies-list.component';
   templateUrl: './movies-box.component.html',
   styleUrls: ['./movies-box.component.scss']
 })
-export class MoviesBoxComponent implements OnInit, AfterViewInit {
+export class MoviesBoxComponent implements OnInit {
 
   constructor(private moviesService: MoviesPageService) {}
 
@@ -19,11 +19,9 @@ export class MoviesBoxComponent implements OnInit, AfterViewInit {
   listViewWidth: number = 0;
   listViewHeight: number = 0;
 
-
-  //@HostListener('window:resize', ['$event'])
-  updateMovies = (): void => {
+  requestMovies = (genre?: string, list?: string, page?: number): void => {
     this.moviesService
-    .getFilteredMovies(undefined, 'top_rated_english_250', this.moviesPage)
+    .getFilteredMovies(genre, list, this.moviesPage)
     .subscribe((data: Movies) => {
       let results = data.results;
       console.log(results);
@@ -34,7 +32,7 @@ export class MoviesBoxComponent implements OnInit, AfterViewInit {
           name: result.titleText.text,
           image: result.primaryImage.url,
           genre: result.genres.genres[0].text.toLocaleLowerCase()
-        }
+        };
 
         this.moviesReceived = [...this.moviesReceived, newMovie];
       }
@@ -43,8 +41,14 @@ export class MoviesBoxComponent implements OnInit, AfterViewInit {
     this.moviesPage += 1;
   }
 
+  resetMovies = (): void => {
+    this.moviesPage = 1;
+
+    this.requestMovies();
+  }
+
   ngOnInit(): void {
-    this.updateMovies();
+    this.requestMovies(undefined, undefined, 1);
 
     // getting all genres
     this.moviesService
