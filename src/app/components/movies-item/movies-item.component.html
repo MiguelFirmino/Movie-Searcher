@@ -1,0 +1,10 @@
+<div ngClass="movie-item">
+    <div class="movie-caption">
+        <p>{{ myMovie.genre }}</p>
+    </div>
+    <img 
+    src="{{ myMovie.image }}" 
+    alt="{{ myMovie.name }}" 
+    class="movie-image"
+    [ngClass]="myMovie.genre">
+</div>
